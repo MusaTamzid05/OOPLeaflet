@@ -1,5 +1,11 @@
+/*
+ *  The code here is just my attemp make the oop  version of the code =>   https://leafletjs.com/examples/choropleth/
+ **/
+
 
 function getColor(d) {
+
+    // color each state according to its dencity.
     return d > 1000 ? '#800026' :
            d > 500  ? '#BD0026' :
            d > 200  ? '#E31A1C' :
@@ -25,6 +31,7 @@ function style(feature) {
 
 }
 
+
 function initializeMap() {
 
 
@@ -40,7 +47,7 @@ function initializeMap() {
         zoom: 4
     };
 
-    var m = new Map("mapid" ,
+    var m = new InteractiveMap("mapid" ,
         mapOptions,
         layer
     );
