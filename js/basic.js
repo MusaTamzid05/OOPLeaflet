@@ -39,17 +39,25 @@ function initializeMap() {
 
     ];
 
-    var m = new Map("mapid" , {
-            center: [23.777, 90.399452],
-            zoom: 30
-    } , layer ,
-     markers);
+    let mapOptions = {
+        center: [23.777, 90.399452],
+        zoom: 30
+    };
+
+    var m = new Map("mapid" ,
+        mapOptions,
+        layer ,
+        markers);
 
 
+    m.setMarker({
 
-    let coordinates1 = [
-        [23.777, 90.399452] ,
-    ];
+            coordinates : [[ 23.777, 90.399452 ]] ,
+            shape : MarkerShape.Circle,
+        options : {
+            color : "blue"
+        }
+    });
 
 
 
@@ -75,7 +83,7 @@ class Map {
         L.tileLayer(layer.link , layer.options).addTo(this.map);
     }
 
-    setMarker(marker) {
-        this.markers.push(marker);
+    setMarker(markerAttr) {
+            let marker = new Marker(markerAttr.coordinates , this , markerAttr.shape , markerAttr.options);
     }
 }
