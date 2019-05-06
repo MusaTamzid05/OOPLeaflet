@@ -10,7 +10,8 @@ function initializeMap() {
         {
             coordinates : [[ 23.777, 90.399452 ]] ,
             shape : MarkerShape.Normal,
-            options : undefined
+            options : undefined,
+            popupParameters : undefined
         } ,
         {
 
@@ -20,7 +21,8 @@ function initializeMap() {
                 color : "red" ,
                 fillColor : "#f03",
                 fillOpacity : 0.5,
-                radius : 100
+                radius : 100,
+                popupParameters : undefined
             }
         } ,
         {
@@ -34,6 +36,11 @@ function initializeMap() {
             shape : MarkerShape.Polygon,
             options : {
                 color : "red" ,
+            },
+
+            popupParameters : {
+                message : "pop paramter open true example",
+                open : true
             }
         }
 
@@ -56,6 +63,10 @@ function initializeMap() {
             shape : MarkerShape.Circle,
         options : {
             color : "blue"
+        },
+        popupParameters : {
+            message : "This is a circle example",
+            open : false
         }
     });
 
@@ -74,7 +85,7 @@ class Map {
 
 
         for(let markerAttr of markersAttr) {
-            let marker = new Marker(markerAttr.coordinates , this , markerAttr.shape , markerAttr.options);
+            this.setMarker(markerAttr);
         }
 
     }
@@ -84,6 +95,13 @@ class Map {
     }
 
     setMarker(markerAttr) {
-            let marker = new Marker(markerAttr.coordinates , this , markerAttr.shape , markerAttr.options);
+
+        console.log(markerAttr.popupParameters);
+            let marker = new Marker(
+                markerAttr.coordinates ,
+                this ,
+                markerAttr.shape ,
+                markerAttr.popupParameters ,
+                markerAttr.options);
     }
 }
