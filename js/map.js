@@ -35,7 +35,7 @@ class Map {
         this.map.on(eventName , callback);
     }
 
-    addGeoJSON(geoJSONFeature) {
-        L.geoJSON(geoJSONFeature).addTo(this.map.map);
+    addGeoJSON(geoJSONData) {
+        L.geoJSON(geoJSONData).addTo(this.map);
     }
 }
