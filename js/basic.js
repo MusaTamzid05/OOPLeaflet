@@ -1,5 +1,6 @@
 
 
+
 function initializeMap() {
 
     let layer = new Layer(
@@ -70,6 +71,15 @@ function initializeMap() {
         }
     });
 
+    m.addEvent("click" , (e) =>{
+        let popup = PopUp.CreatePopup();
+        popup
+            .setLatLng(e.latlng)
+            .setContent("Clicked map at " + e.latlng.toString())
+            .openOn(m.map);
+    }
+
+    );
 
 
 }
@@ -103,5 +113,10 @@ class Map {
                 markerAttr.shape ,
                 markerAttr.popupParameters ,
                 markerAttr.options);
+    }
+
+
+    addEvent(eventName , callback) {
+        this.map.on(eventName , callback);
     }
 }
