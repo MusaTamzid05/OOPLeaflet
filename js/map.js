@@ -35,7 +35,15 @@ class Map {
         this.map.on(eventName , callback);
     }
 
-    addGeoJSON(geoJSONData) {
-        L.geoJSON(geoJSONData).addTo(this.map);
+    addGeoJSON(src) {
+
+        if(src.endsWith(".geojson")) {
+            let geoData = new L.GeoJSON.AJAX(src).addTo(this.map);
+            return;
+        }
+
+
+        L.geoJSON(src).addTo(this.map);
+
     }
 }
