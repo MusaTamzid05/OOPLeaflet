@@ -35,15 +35,17 @@ class Map {
         this.map.on(eventName , callback);
     }
 
-    addGeoJSON(src) {
+    addGeoJSON(src , styleCallback = undefined) {
 
-        if(src.endsWith(".geojson")) {
-            let geoData = new L.GeoJSON.AJAX(src).addTo(this.map);
-            return;
+        if(typeof(src) === "string") {
+            if(src.endsWith(".geojson")) {
+                let geoData = new L.GeoJSON.AJAX(src , {style : styleCallback}).addTo(this.map);
+                return;
+            }
         }
 
-
-        L.geoJSON(src).addTo(this.map);
+        console.log(styleCallback);
+        L.geoJSON(src , { style : styleCallback}).addTo(this.map);
 
     }
 }
