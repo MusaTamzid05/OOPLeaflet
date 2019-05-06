@@ -6,14 +6,32 @@ var MarkerShape = {
     Polygon : 3
 };
 
+class PopUp  {
+
+    constructor(marker, message , open = false ) {
+
+        // TO-DO : add attributes to pop up
+        this.marker = marker.marker;
+        this.message = message;
+        if(open)
+            this.marker.bindPopup(this.message).openPopup();
+        else
+            this.marker.bindPopup(this.message);
+    }
+}
+
 
 class Marker {
 
-    constructor(coordinates ,  map , shape = undefined , options = undefined) {
+    constructor(coordinates ,  map , shape , popupParameters = undefined ,  options = undefined) {
         this.coordinates = coordinates;
         this.options = options;
         this.map = map;
         this.initShape(shape);
+
+        if(popupParameters) {
+            this.initPopup(popupParameters);
+        }
     }
 
     initShape(shape)  {
@@ -30,6 +48,13 @@ class Marker {
         }
     }
 
+
+    initPopup(popupParameters) {
+
+        console.log(popupParameters);
+        let popup = new PopUp(this , popupParameters.message , popupParameters.open);
+    }
+
     drawSimpleMarker() {
 
         if(this.coordinates.length !== 1) {
@@ -37,7 +62,7 @@ class Marker {
             return;
         }
 
-        this.shapeObj = L.marker(this.coordinates[0], this.options).addTo(this.map.map);
+        this.marker= L.marker(this.coordinates[0], this.options).addTo(this.map.map);
     }
 
     drawCircle() {
@@ -46,7 +71,7 @@ class Marker {
             console.log("Atleat one coordinate needed for circle marker");
             return;
         }
-        this.shapeObj = L.circle(this.coordinates[0], this.options).addTo(this.map.map);
+        this.marker= L.circle(this.coordinates[0], this.options).addTo(this.map.map);
 
     }
 
@@ -57,7 +82,7 @@ class Marker {
             return;
         }
 
-        this.shapeObj = L.polygon(
+        this.marker = L.polygon(
             this.coordinates , this.options).addTo(this.map.map);
 
     }
