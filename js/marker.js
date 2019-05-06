@@ -18,6 +18,10 @@ class PopUp  {
         else
             this.marker.bindPopup(this.message);
     }
+
+    static CreatePopup() {
+        return L.popup();
+    }
 }
 
 
