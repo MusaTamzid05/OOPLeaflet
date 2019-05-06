@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Leftlet</title>
+    <!--- leaflet -->
+	 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css"
+	   integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
+	   crossorigin=""/>
+	<script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"
+	   integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg=="
+	   crossorigin=""></script>
+    <!--- jquery -->
+       <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+	       integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+	       crossorigin="anonymous">
+       </script>
+    <script src="js/basic.js"></script>
+    <link rel="stylesheet" href="css/basic.css"/>
+</head>
+<body>
+    <div id = "mapid"></div>
+    <script>
+
+        $(document).ready(function() {
+            initializeMap();
+        });
+    </script>
+</body>
+</html>
